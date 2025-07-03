@@ -1,0 +1,15 @@
+# ajustar carrossel para arrastar no celular
+# fazer funcionalidade dos filtros de projetos funcionarem
+# ajustar border-radius do hover no carrossel de imagens
+# mostrar setinha da esquerda apenas depois que clicar na setinha da direita a primeira vez
+# adicionar botão ver projetos tela inicial
+# ajustar js youtube
+# ajustar filtros e remover icone de exibir em grade ou lista os outros videos na tela de videos
+# deixar repositorio do xtema privado mas exibir ainda em projetos alguns detalhes sobre o projeto
+# ajustar breadcrumbs
+
+# fazer duplicação dos carrosseis para o loop
+
+#ajustar responsividade
+
+#refatorar código, principalmente dos loop do carrossel (arrumamar classes e codigos aleatorios do js gerados por IA)

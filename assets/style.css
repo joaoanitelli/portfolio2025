@@ -15,6 +15,7 @@ a {
 }
 
 :root {
+    /* alterar primary color */
     --color-primary: #6A37E6;
     --color-text: #1E1E1E;
     --color-bg: #FCFCFC;
@@ -106,13 +107,14 @@ ul {
     margin-top: auto;
     border-top: 1px solid #f1f1f1;
     padding-top: 16px;
+    gap: 16px;
 }
 
-.footer-menu > a {
+.footer-menu>a {
     text-decoration: none;
 }
 
-.footer-menu > a > i {
+.footer-menu>a>i {
     font-size: 24px;
     color: var(--color-gray);
 }
@@ -171,11 +173,22 @@ body::before {
 }
 
 .content {
+    height: calc(100% - 64px);
+}
+
+.main {
+    max-height: 100%;
+    overflow: auto;
+    padding: 32px;
+}
+
+/* estilizar scroll */
+
+.content-home {
     display: grid;
     grid-template-columns: 60% 40%;
     align-items: center;
-    padding: 24px;
-    height: calc(100% - 64px);
+    height: 100%;
 }
 
 .content .hero-section {
@@ -210,9 +223,17 @@ body::before {
     transition: all 0.4s ease;
 }
 
+.img-about > a > img{
+    height: 180px !important;
+    width: 180px !important;
+    border-radius: 0px !important;
+}
+
 .content .img img:hover {
-    transform: scale(1.05) rotate(5deg);
+    scale: 1.1;
+    rotate: 3deg;
     box-shadow: 0 0 30px rgba(139, 92, 246, 0.6), 0 0 60px rgba(236, 72, 153, 0.4);
+    
 }
 
 @keyframes profileFloat {
@@ -223,11 +244,11 @@ body::before {
     }
 
     33% {
-        transform: translateY(-8px) rotate(1deg);
+        transform: translateY(-12px) rotate(3deg);
     }
 
     66% {
-        transform: translateY(-4px) rotate(-1deg);
+        transform: translateY(-6px) rotate(-3deg);
     }
 }
 
@@ -653,4 +674,31 @@ body.dark .theme-btn .sun {
 body.dark .theme-btn .moon {
     opacity: 1;
     transform: translate(-50%, -50%) rotate(0deg) scale(1);
+}
+
+.social-icon {
+    color: var(--color-gray);
+    transition: all 0.2s ease;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.social-icon>svg {
+    opacity: 0.5;
+    transition: 0.15s;
+}
+
+.social-icon:hover>svg {
+    opacity: 1;
+}
+
+.social-icon:hover {
+    color: var(--color-primary);
+    background: #f3f4f6;
+    transform: translateY(-1px);
+}
+
+
+.title-section {
+    font-size: 32px;
 }
