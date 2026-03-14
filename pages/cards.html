@@ -1,207 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
-
-
-    <main class="main">
-        <div class="container">
-            <div class="page-header">
-                <h1 class="page-title">
-                    Meus <span class="highlight">Projetos</span>
-                </h1>
-                <p class="page-subtitle">Explore os projetos que desenvolvi ao longo da minha jornada</p>
-            </div>
-
-            <div class="tech-filters" id="techFilters">
-                <button class="tech-filter">Todos</button>
-                <button class="tech-filter">Saas</button>
-                <button class="tech-filter">Html/Css</button>
-                <button class="tech-filter">JavaScript</button>
-                <button class="tech-filter">ReactJS</button>
-            </div>
-
-            <div class="results-counter">
-                <p><span id="resultsCount"></span> projetos encontrados</p>
-            </div>
-        </div>
-
-        <div class="projects-grid" id="projectsGrid">
-            <div class="project-card">
-                <div class="project-image-container">
-                    <img src="../assets/images/projetos/imobi.png" alt="Xtema - Sistema para Restaurantes"
-                        class="project-image" />
-                    <div class="project-overlay">
-                        <button class="overlay-btn primary"
-                            onclick="window.open('http://imobibrasil.com.br/', '_blank')">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15,3 21,3 21,9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                            Ver Projeto
-                        </button>
-                        <!--<button class="overlay-btn secondary"
-                            onclick="window.open('https://github.com/joao/xtema', '_blank')">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path
-                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                </path>
-                            </svg>
-                            GitHub
-                        </button>-->
-                    </div>
-                    <div class="category-badge">Plataforma</div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">ImobiBrasil</h3>
-                    <p class="project-description">Sistema completo de gestão para corretores e imobiliárias. Modelos
-                        pré-definidos e personalizáveis. Mais de 13.000 usuários assinantes.</p>
-                    <div class="project-technologies">
-                        <span class="tech-tag">Saas</span>
-                        <span class="tech-tag">Html/Css</span>
-                        <span class="tech-tag">JavaScript</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-image-container">
-                    <img src="../assets/images/projetos/xtema.png" alt="Xtema - Sistema para Restaurantes"
-                        class="project-image" />
-                    <div class="project-overlay">
-                        <button class="overlay-btn primary" onclick="window.open('https://xtema-demo.com', '_blank')">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15,3 21,3 21,9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                            Ver Projeto
-                        </button>
-                        <!--<button class="overlay-btn secondary"
-                            onclick="window.open('https://github.com/joao/xtema', '_blank')">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path
-                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                </path>
-                            </svg>
-                            GitHub
-                        </button>-->
-                    </div>
-                    <div class="category-badge">Plataforma</div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Xtema - Gestão p/ Restaurantes e Derivados</h3>
-                    <p class="project-description">Sistema completo de gestão para restaurantes desenvolvido como TCC na
-                        Fatec. Inclui controle de pedidos, estoque e relatórios.</p>
-                    <div class="project-technologies">
-                        <span class="tech-tag">Saas</span>
-                        <span class="tech-tag">Html/Css</span>
-                        <span class="tech-tag">JavaScript</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="project-card">
-                <div class="project-image-container">
-                    <img src="../assets/images/projetos/ajuda_ai.png" alt="ajuda.ai Platform" class="project-image" />
-                    <div class="project-overlay">
-                        <button class="overlay-btn primary"
-                            onclick="window.open('https://daviricard0.github.io/Ajuda-Ai/index.html', '_blank')">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15,3 21,3 21,9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                            Ver Projeto
-                        </button>
-                        <button class="overlay-btn secondary"
-                            onclick="window.open('https://github.com/DaviRicard0/Ajuda-Ai', '_blank')">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path
-                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                </path>
-                            </svg>
-                            GitHub
-                        </button>
-                    </div>
-                    <div class="category-badge">Hackathon</div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">meajuda.ai - Serviços Voluntários</h3>
-                    <p class="project-description">Plataforma de trabalho voluntário que conecta pessoas em situação de
-                        vulnerabilidade com profissionais dispostos a ajudar.</p>
-                    <div class="project-technologies">
-                        <span class="tech-tag">Saas</span>
-                        <span class="tech-tag">Html/Css</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-image-container">
-                    <img src="../assets/images/projetos/portfolio.png" alt="Portfolio" class="project-image" />
-                    <div class="project-overlay">
-                        <button class="overlay-btn primary"
-                            onclick="window.open('https://joaoartero.com.br', '_blank')">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15,3 21,3 21,9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                            Ver Projeto
-                        </button>
-                        <button class="overlay-btn secondary"
-                            onclick="window.open('https://github.com/joaoanitelli/portfolio2025', '_blank')">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path
-                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                </path>
-                            </svg>
-                            GitHub
-                        </button>
-                    </div>
-                    <div class="category-badge">Portfólio</div>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Portfólio 2025</h3>
-                    <p class="project-description">Meu site em página única (SPA) feito para mostrar meus projetos e um pouco da minha experiência e perfil profissional.</p>
-                    <div class="project-technologies">
-                        <span class="tech-tag">Saas</span>
-                        <span class="tech-tag">Html/Css</span>
-                        <span class="tech-tag">JavaScript</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="empty-state" id="emptyState" style="display: none;">
-            <div class="empty-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <path d="m21 21-4.35-4.35"></path>
-                </svg>
-            </div>
-            <h3>Nenhum projeto encontrado</h3>
-            <p>Tente ajustar os filtros ou termo de busca para encontrar projetos.</p>
-            <button class="btn-outline" onclick="clearAllFilters()">Limpar filtros</button>
-        </div>
-        </div>
-    </main>
+    <title>Projetos</title>
     <style>
         .project-card {
             opacity: 0;
@@ -211,95 +14,6 @@
 
         .project-card.animated {
             animation: fadeInUp 0.6s forwards;
-        }
-
-        .filters-section {
-            background: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e5e7eb;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .search-container {
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 0.75rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #9ca3af;
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 0.75rem 0.75rem 0.75rem 2.5rem;
-            height: 3rem;
-            font-size: 1.125rem;
-            border: 1px solid #d1d5db;
-            border-radius: 0.5rem;
-            background: white;
-            transition: all 0.2s ease;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: #7c3aed;
-            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
-        }
-
-        .filters-container {
-            margin-bottom: 1rem;
-        }
-
-        .filters-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-
-        .filters-title {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
-            color: #374151;
-        }
-
-        .filter-icon {
-            width: 1.25rem;
-            height: 1.25rem;
-            color: #6b7280;
-        }
-
-        .clear-filters {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            background: none;
-            border: none;
-            color: #6b7280;
-            cursor: pointer;
-            font-size: 0.875rem;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.375rem;
-            transition: color 0.2s ease;
-        }
-
-        .clear-filters:hover {
-            color: #374151;
-        }
-
-        .clear-icon {
-            width: 1rem;
-            height: 1rem;
         }
 
         .tech-filters {
@@ -347,8 +61,9 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(352px, 1fr));
             gap: 1.5rem;
+            margin-bottom: 24px;
         }
 
         .project-card {
@@ -531,7 +246,6 @@
             color: #374151;
             border-radius: 0.5rem;
             font-weight: 500;
-            text-decoration: none;
             cursor: pointer;
             transition: all 0.2s ease;
         }
@@ -541,43 +255,32 @@
             border-color: #9ca3af;
         }
 
+        /* ── RESPONSIVO ── */
+
         @media (max-width: 768px) {
-            .main-content {
-                padding: 1rem;
-            }
-
-            .page-title {
-                font-size: 2rem;
-            }
-
-            .filters-section {
-                padding: 1rem;
-            }
-
-            .search-input {
-                height: 2.5rem;
-                font-size: 1rem;
-            }
-
-            .filters-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-
             .projects-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
 
             .project-overlay {
-                flex-direction: column;
+                /* no mobile o overlay fica sempre visível pois não há hover */
+                opacity: 1;
+                background: rgba(0, 0, 0, 0.45);
+                flex-direction: row;
+                align-items: flex-end;
+                justify-content: flex-start;
+                padding: 0.75rem;
                 gap: 0.5rem;
             }
 
             .overlay-btn {
                 padding: 0.375rem 0.75rem;
                 font-size: 0.75rem;
+            }
+
+            .project-image {
+                height: 10rem;
             }
         }
 
@@ -608,7 +311,507 @@
                 padding: 0.125rem 0.5rem;
             }
         }
+
+        /* ── FEATURED PROJECT ── */
+        .featured-project {
+            background: white;
+            border-radius: 1.25rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 24px rgba(124, 58, 237, 0.08);
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #7c3aed, #a855f7, #ec4899);
+            border-radius: 1.25rem 1.25rem 0 0;
+        }
+
+        .featured-project-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f3e8ff;
+            color: #7c3aed;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-project-body {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .featured-project-header {
+            margin-bottom: 1rem;
+        }
+
+        .featured-category {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .featured-project-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111827;
+            line-height: 1.1;
+            margin: 4px 0 2px;
+        }
+
+        .featured-project-subtitle {
+            font-size: 1rem;
+            color: #7c3aed;
+            font-weight: 500;
+        }
+
+        .featured-project-description {
+            color: #6b7280;
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .featured-project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feat-tag {
+            background: #f3e8ff;
+            color: #7c3aed;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.8125rem;
+            font-weight: 600;
+        }
+
+        .featured-project-btns {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .feat-btn-primary,
+        .feat-btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .feat-btn-primary {
+            background: #7c3aed;
+            color: white;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+        }
+
+        .feat-btn-primary:hover {
+            background: #6d28d9;
+            transform: translateY(-1px);
+        }
+
+        .feat-btn-secondary {
+            background: white;
+            color: #374151;
+            border: 1px solid #e5e7eb;
+        }
+
+        .feat-btn-secondary:hover {
+            border-color: #7c3aed;
+            color: #7c3aed;
+            transform: translateY(-1px);
+        }
+
+        /* ── Galeria ── */
+        .featured-project-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .feat-img-main {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            height: 200px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .feat-img-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.4s ease;
+        }
+
+        .feat-img-main:hover img {
+            transform: scale(1.03);
+        }
+
+        .feat-img-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+        }
+
+        .feat-img-thumb {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            height: 80px;
+            border: 1px solid #e5e7eb;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .feat-img-thumb:hover {
+            border-color: #7c3aed;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+        }
+
+        .feat-img-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        /* ── Responsivo ── */
+        @media (max-width: 768px) {
+            .featured-project-body {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .featured-project-gallery {
+                order: -1;
+            }
+
+            .feat-img-main {
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .featured-project {
+                padding: 1.25rem;
+            }
+
+            .featured-project-title {
+                font-size: 1.5rem;
+            }
+
+            .feat-img-grid {
+                gap: 0.5rem;
+            }
+
+            .feat-img-thumb {
+                height: 64px;
+            }
+        }
+
+        /* ── Dark mode ── */
+        body.dark .featured-project {
+            background: #1e1e24;
+            border-color: #2e2e36;
+        }
+
+        body.dark .featured-project-title {
+            color: #f1f1f1;
+        }
+
+        body.dark .featured-project-description {
+            color: #9ca3af;
+        }
+
+        body.dark .featured-project-badge {
+            background: rgba(124, 58, 237, 0.2);
+            color: #c4b5fd;
+        }
+
+        body.dark .feat-tag {
+            background: rgba(124, 58, 237, 0.2);
+            color: #c4b5fd;
+        }
+
+        body.dark .feat-btn-secondary {
+            background: #27272a;
+            border-color: #3f3f46;
+            color: #d1d5db;
+        }
+
+        body.dark .feat-btn-secondary:hover {
+            border-color: #8b5cf6;
+            color: #a78bfa;
+        }
+
+        body.dark .feat-img-main,
+        body.dark .feat-img-thumb {
+            border-color: #2e2e36;
+        }
     </style>
+</head>
+
+<body>
+
+    <main class="main">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">
+                    Meus <span class="highlight">Projetos</span>
+                </h1>
+                <p class="page-subtitle">Explore os projetos que desenvolvi ao longo da minha jornada</p>
+            </div>
+            <!-- ── DESTAQUE XTEMA ── -->
+            <section class="featured-project">
+                <div class="featured-project-badge">
+                    <i class="ph ph-star-four"></i> Projeto em Destaque
+                </div>
+
+                <div class="featured-project-body">
+                    <div class="featured-project-info">
+                        <div class="featured-project-header">
+                            <span class="featured-category">TCC · Plataforma SaaS</span>
+                            <h2 class="featured-project-title">Xtema</h2>
+                            <p class="featured-project-subtitle">Gestão para Restaurantes e Derivados</p>
+                        </div>
+                        <p class="featured-project-description">
+                            Sistema completo desenvolvido como TCC na Fatec. Controle de pedidos em tempo real,
+                            gestão de estoque, relatórios financeiros e painel administrativo para restaurantes,
+                            lanchonetes e derivados.
+                        </p>
+                        <div class="featured-project-tags">
+                            <span class="feat-tag">SaaS</span>
+                            <span class="feat-tag">HTML/CSS</span>
+                            <span class="feat-tag">JavaScript</span>
+                            <span class="feat-tag">TCC Fatec</span>
+                        </div>
+                        <div class="featured-project-btns">
+                            <a href="https://xtema.com.br/" target="_blank" class="feat-btn-primary">
+                                <i style="color: white;" class="ph ph-arrow-square-out"></i> Ver Projeto
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="featured-project-gallery">
+                        <div class="feat-img-main">
+                            <img src="../assets/images/projetos/xtema.png" alt="Xtema dashboard" />
+                        </div>
+                        <div class="feat-img-grid">
+                            <div class="feat-img-thumb">
+                                <img src="../assets/images/projetos/xtema.png" alt="Xtema pedidos" />
+                            </div>
+                            <div class="feat-img-thumb">
+                                <img src="../assets/images/projetos/xtema.png" alt="Xtema estoque" />
+                            </div>
+                            <div class="feat-img-thumb">
+                                <img src="../assets/images/projetos/xtema.png" alt="Xtema relatórios" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="tech-filters" id="techFilters">
+                <button class="tech-filter">Todos</button>
+                <button class="tech-filter">Saas</button>
+                <button class="tech-filter">Html/Css</button>
+                <button class="tech-filter">JavaScript</button>
+                <button class="tech-filter">ReactJS</button>
+            </div>
+
+            <div class="results-counter">
+                <p><span id="resultsCount"></span> projetos encontrados</p>
+            </div>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="../assets/images/projetos/imobi.png" alt="ImobiBrasil" class="project-image" />
+                    <div class="project-overlay">
+                        <button class="overlay-btn primary"
+                            onclick="window.open('http://imobibrasil.com.br/', '_blank')">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15,3 21,3 21,9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            Ver Projeto
+                        </button>
+                    </div>
+                    <div class="category-badge">Plataforma</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">ImobiBrasil</h3>
+                    <p class="project-description">Sistema completo de gestão para corretores e imobiliárias. Modelos
+                        pré-definidos e personalizáveis. Mais de 13.000 usuários assinantes.</p>
+                    <div class="project-technologies">
+                        <span class="tech-tag">Saas</span>
+                        <span class="tech-tag">Html/Css</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="../assets/images/projetos/xtema.png" alt="Xtema" class="project-image" />
+                    <div class="project-overlay">
+                        <button class="overlay-btn primary" onclick="window.open('https://xtema-demo.com', '_blank')">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15,3 21,3 21,9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            Ver Projeto
+                        </button>
+                    </div>
+                    <div class="category-badge">Plataforma</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Xtema - Gestão p/ Restaurantes e Derivados</h3>
+                    <p class="project-description">Sistema completo de gestão para restaurantes desenvolvido como TCC na
+                        Fatec. Inclui controle de pedidos, estoque e relatórios.</p>
+                    <div class="project-technologies">
+                        <span class="tech-tag">Saas</span>
+                        <span class="tech-tag">Html/Css</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="../assets/images/projetos/ajuda_ai.png" alt="meajuda.ai" class="project-image" />
+                    <div class="project-overlay">
+                        <button class="overlay-btn primary"
+                            onclick="window.open('https://daviricard0.github.io/Ajuda-Ai/index.html', '_blank')">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15,3 21,3 21,9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            Ver Projeto
+                        </button>
+                        <button class="overlay-btn secondary"
+                            onclick="window.open('https://github.com/DaviRicard0/Ajuda-Ai', '_blank')">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                            GitHub
+                        </button>
+                    </div>
+                    <div class="category-badge">Hackathon</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">meajuda.ai - Serviços Voluntários</h3>
+                    <p class="project-description">Plataforma de trabalho voluntário que conecta pessoas em situação de
+                        vulnerabilidade com profissionais dispostos a ajudar.</p>
+                    <div class="project-technologies">
+                        <span class="tech-tag">Saas</span>
+                        <span class="tech-tag">Html/Css</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image-container">
+                    <img src="../assets/images/projetos/portfolio.png" alt="Portfólio" class="project-image" />
+                    <div class="project-overlay">
+                        <button class="overlay-btn primary"
+                            onclick="window.open('https://joaoartero.com.br', '_blank')">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15,3 21,3 21,9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            Ver Projeto
+                        </button>
+                        <button class="overlay-btn secondary"
+                            onclick="window.open('https://github.com/joaoanitelli/portfolio2025', '_blank')">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                            GitHub
+                        </button>
+                    </div>
+                    <div class="category-badge">Portfólio</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Portfólio 2025</h3>
+                    <p class="project-description">Meu site em página única (SPA) feito para mostrar meus projetos e um
+                        pouco da minha experiência e perfil profissional.</p>
+                    <div class="project-technologies">
+                        <span class="tech-tag">Saas</span>
+                        <span class="tech-tag">Html/Css</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+            </div>
+            <h3>Nenhum projeto encontrado</h3>
+            <p>Tente ajustar os filtros para encontrar projetos.</p>
+            <button class="btn-outline" onclick="clearAllFilters()">Limpar filtros</button>
+        </div>
+        <nav class="quick-nav">
+            <a class="quick-nav-item" onclick="document.getElementById('li-home').click()">
+                <i class="ph ph-house"></i>
+                <span>Início</span>
+            </a>
+            <a class="quick-nav-item" onclick="document.getElementById('li-experience').click()">
+                <i class="ph ph-user"></i>
+                <span>Sobre Mim</span>
+            </a>
+            <a class="quick-nav-item" onclick="document.getElementById('li-videos').click()">
+                <i class="ph ph-youtube-logo"></i>
+                <span>Vídeos</span>
+            </a>
+        </nav>
+    </main>
+
 </body>
 
 </html>

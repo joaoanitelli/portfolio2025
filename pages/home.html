@@ -1,34 +1,402 @@
-<div class="main content-home">
-    <div class="hero-section">
-        <div class="text">
-            <p class="title">
-                <span id="typewriter"></span>
-                <span class="cursor">|</span>
-            </p>
-            <p class="subtitle">Designer Engineer | Figma | React | Javascript</p>
-        </div>
-        <div class="btns">
-            <a target="_blank" href="https://wa.me/5518997811645?text=Ol%C3%A1!"><button class="btn-contact">Entrar em Contato</button></a>
-            <a href="https://drive.google.com/uc?export=download&id=1e_P9PkUTTrPvu3CYfidIh9izIv5F2yoM
-"><button class="btn-cv">Baixar Currículo</button></a>
-        </div>
-        <div class="cards-results">
-            <div class="card">
-                <p class="title" data-count="15000" data-suffix="+">0+</p>
-                <p class="subtitle">Usuários impactados</p>
+<main class="main">
+    <style>
+        .content-home {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 48px;
+            min-height: calc(100vh - 60px);
+        }
+
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--color-primary-light, #ede9fe);
+            color: var(--color-primary, #6A37E6);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 999px;
+            width: fit-content;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .hero-tag i {
+            font-size: 14px;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .hero-title {
+            font-size: clamp(28px, 3.5vw, 44px);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-text, #1e1e1e);
+            min-height: 56px;
+        }
+
+        .cursor {
+            color: var(--color-primary, #6A37E6);
+            animation: blink 1s infinite;
+            font-weight: 300;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--color-gray, #7a7a7a);
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+            animation-delay: 0.8s;
+        }
+
+        .hero-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+            animation-delay: 1s;
+        }
+
+        .chip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--color-hover-bg, #f6f6f6);
+            border: 1px solid var(--color-border, #f1f1f1);
+            color: var(--color-text, #1e1e1e);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 5px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .chip:hover {
+            border-color: var(--color-primary, #6A37E6);
+            color: var(--color-primary, #6A37E6);
+            background: var(--color-primary-light, #ede9fe);
+        }
+
+        .chip i {
+            font-size: 15px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+            animation-delay: 1.2s;
+        }
+
+        .btn-contact,
+        .btn-cv {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .btn-contact {
+            background: var(--color-primary, #6A37E6);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(106, 55, 230, 0.3);
+        }
+
+        .btn-contact:hover {
+            background: #5828d4;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(106, 55, 230, 0.4);
+        }
+
+        .btn-cv {
+            background: var(--color-white, #fff);
+            color: var(--color-text, #1e1e1e);
+            border: 1px solid var(--color-border, #f1f1f1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-cv:hover {
+            border-color: var(--color-primary, #6A37E6);
+            color: var(--color-primary, #6A37E6);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ── STATS ── */
+        .cards-results {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+            animation-delay: 1.5s;
+        }
+
+        .cards-results .card {
+            flex: 1;
+            min-width: 90px;
+            background: var(--color-white, #fff);
+            border: 1px solid var(--color-border, #f1f1f1);
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.25s ease;
+        }
+
+        .cards-results .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(106, 55, 230, 0.12);
+            border-color: var(--color-primary, #6A37E6);
+        }
+
+        .cards-results .card .stat-number {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--color-primary, #6A37E6);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .cards-results .card .subtitle {
+            font-size: 12px;
+            color: var(--color-gray, #7a7a7a);
+            line-height: 1.3;
+        }
+
+        /* ── FOTO ── */
+        .hero-img-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.7s ease forwards;
+            animation-delay: 0.5s;
+        }
+
+        .hero-img-bg {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(106, 55, 230, 0.12) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        .hero-img-wrap img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--color-white, #fff);
+            box-shadow: 0 8px 32px rgba(106, 55, 230, 0.25), 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-img-wrap img:hover {
+            transform: scale(1.04) rotate(2deg);
+            box-shadow: 0 16px 48px rgba(106, 55, 230, 0.35);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── RESPONSIVO ── */
+        @media (max-width: 900px) {
+            .content-home {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                gap: 32px;
+            }
+
+            .hero-img-wrap {
+                order: -1;
+                /* foto vai para cima no mobile */
+            }
+
+            .hero-img-wrap img {
+                width: 180px;
+                height: 180px;
+            }
+
+            .hero-img-bg {
+                width: 200px;
+                height: 200px;
+            }
+
+            .hero-title {
+                font-size: clamp(24px, 6vw, 36px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-home {
+                gap: 24px;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+            }
+
+            .btn-contact,
+            .btn-cv {
+                justify-content: center;
+            }
+
+            .cards-results .card .stat-number {
+                font-size: 22px;
+            }
+        }
+    </style>
+
+    <div class="content-home">
+        <!-- Coluna texto -->
+        <div class="hero-section">
+
+            <span class="hero-tag">
+                <i class="ph ph-sparkle"></i>
+                Designer Engineer
+            </span>
+
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span id="typewriter"></span><span class="cursor">|</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Transformo ideias em interfaces digitais que as pessoas amam usar.<br>
+                    Designer Engineer com foco em React, Figma e experiência do usuário.
+                </p>
             </div>
-            <div class="card">
-                <p class="title" data-count="100" data-suffix="+">0+</p>
-                <p class="subtitle">Projetos participados</p>
+
+            <div class="hero-chips">
+                <span class="chip notranslate"><i class="ph ph-figma-logo"></i> Figma</span>
+                <span class="chip notranslate"><i class="ph ph-atom"></i> React</span>
+                <span class="chip notranslate"><i class="ph ph-code"></i> JavaScript</span>
+                <span class="chip notranslate"><i class="ph ph-paint-brush"></i> UI/UX</span>
             </div>
-            <div class="card">
-                <p class="title" data-count="2" data-suffix="+">0+</p>
-                <p class="subtitle">Anos de experiência</p>
+
+            <div class="hero-btns">
+                <a class="btn-contact" target="_blank" href="https://wa.me/5518997811645?text=Olá!">
+                    <i style="color: white;" class="ph ph-whatsapp-logo"></i> Entrar em Contato
+                </a>
+                <a class="btn-cv"
+                    href="https://drive.google.com/uc?export=download&id=1e_P9PkUTTrPvu3CYfidIh9izIv5F2yoM">
+                    <i class="ph ph-download-simple"></i> Baixar Currículo
+                </a>
             </div>
+
+            <div class="cards-results">
+                <div class="card">
+                    <p class="stat-number notranslate" data-count="15000" data-suffix="+">0+</p>
+                    <p class="subtitle">Usuários impactados</p>
+                </div>
+                <div class="card">
+                    <p class="stat-number notranslate" data-count="100" data-suffix="+">0+</p>
+                    <p class="subtitle">Projetos</p>
+                </div>
+                <div class="card">
+                    <p class="stat-number notranslate" data-count="2" data-suffix="+">0+</p>
+                    <p class="subtitle">Anos de exp.</p>
+                </div>
+            </div>
+
         </div>
+
+        <!-- Coluna foto -->
+        <div class="hero-img-wrap">
+            <div class="hero-img-bg"></div>
+            <a target="_blank" href="https://www.linkedin.com/in/jo%C3%A3o-pedro-anitelli-artero-804970276/">
+                <img src="../assets/images/home/perfil.jpg" alt="João Artero">
+            </a>
+        </div>
+
+        <nav class="quick-nav">
+            <a class="quick-nav-item" onclick="document.getElementById('li-experience').click()">
+                <i class="ph ph-user"></i>
+                <span>Sobre Mim</span>
+            </a>
+            <a class="quick-nav-item" onclick="document.getElementById('li-projects').click()">
+                <i class="ph ph-folder-open"></i>
+                <span>Projetos</span>
+            </a>
+            <a class="quick-nav-item" onclick="document.getElementById('li-videos').click()">
+                <i class="ph ph-youtube-logo"></i>
+                <span>Vídeos</span>
+            </a>
+        </nav>
+
     </div>
-    <div class="img">
-        <a target="_blank" href="https://www.linkedin.com/in/jo%C3%A3o-pedro-anitelli-artero-804970276/"><img
-                src="../assets/images/home/perfil.jpg" alt=""></a>
-    </div>
-</div>
+</main>

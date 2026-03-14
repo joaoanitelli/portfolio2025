@@ -5,71 +5,256 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>João Artero | Portfólio Designer Engineer</title>
-<link type="image/png" sizes="96x96" rel="icon" href="assets/images/logotipos/icons8-front-end-96.png">
-    <!-- phosphor icons -->
+    <link type="image/png" sizes="96x96" rel="icon" href="assets/images/logotipos/icons8-front-end-96.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
     <link rel="stylesheet" href="assets/style.css">
+
+    <!-- Esconde a barra do Google Translate -->
+    <style>
+        .goog-te-banner-frame,
+        .goog-te-balloon-frame {
+            display: none !important;
+        }
+
+        body {
+            top: 0 !important;
+        }
+
+        .goog-te-menu-value:hover {
+            text-decoration: none !important;
+        }
+
+        .goog-tooltip {
+            display: none !important;
+        }
+
+        .goog-tooltip:hover {
+            display: none !important;
+        }
+
+        /* Esconde barra do Google Translate */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-balloon-frame {
+            display: none !important;
+        }
+
+        #goog-gt-tt {
+            display: none !important;
+        }
+
+        .goog-te-bubble-iframe {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            display: none !important;
+        }
+
+        /* Impede que o body seja empurrado para baixo */
+        body {
+            top: 0 !important;
+            position: static !important;
+        }
+
+        /* Esconde o iframe injetado */
+        iframe.VIpgJd-ZVi9od-ORHb-OEVmcd {
+            display: none !important;
+        }
+
+        font {
+            color: inherit !important;
+        }
+    </style>
 </head>
 
-
-
 <body>
-    <div class="menu">
-        <div class="logo">
-            <p class="title">João Artero</p>
-            <p class="subtitle">Designer Engineer</p>
-        </div>
-        <ul>
-            <li class="li-menu active" id="li-home">Início</li>
-            <li class="li-menu" id="li-experience">Sobre Mim</li>
-            <li class="li-menu" id="li-projects">Projetos</li>
-            <li class="li-menu" id="li-videos">Vídeos</li>
-        </ul>
-        <div class="footer-menu">
-            <a class="social-icon" target="_blank" href="https://github.com/joaoanitelli/portfolio2025"><svg width="24"
-                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path
-                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                </svg></a>
-            <a class="social-icon" target="_blank"
-                href="https://www.linkedin.com/in/jo%C3%A3o-pedro-anitelli-artero-804970276/"><svg width="24"
-                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                    <rect x="2" y="9" width="4" height="12" />
-                    <circle cx="4" cy="4" r="2" />
-                </svg></a>
-        </div>
-    </div>
 
-    <div class="display">
-        <div class="top-menu">
-            <nav class="breadcrumb">
-                <a href="#" class="breadcrumb-home">Início</a>
-            </nav>
-            <div class="switches">
-                <div class="language-switcher">
-                    <button class="lang-btn active" data-lang="pt">pt</button>
-                    <button class="lang-btn" data-lang="en">en</button>
-                    <button class="lang-btn" data-lang="es">es</button>
+    <!-- Elemento oculto do Google Translate -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app">
+
+        <div class="menu" id="sidebar">
+            <div class="logo">
+                <div class="logo-avatar notranslate">JA</div>
+                <div class="logo-text">
+                    <p class="title notranslate">João Artero</p>
+                    <p class="subtitle notranslate">Designer Engineer</p>
                 </div>
-                <button class="theme-btn" id="themeToggle">
-                    <span class="sun"><i class="ph ph-sun"></i></span>
-                    <span class="moon"><i class="ph ph-moon"></i></span>
-                </button>
+            </div>
+            <p class="nav-label">Menu</p>
+            <ul>
+                <li class="li-menu active" id="li-home">
+                    <i class="ph ph-house"></i> Início
+                </li>
+                <li class="li-menu" id="li-experience">
+                    <i class="ph ph-user"></i> Sobre Mim
+                </li>
+                <li class="li-menu" id="li-projects">
+                    <i class="ph ph-folder-open"></i> Projetos
+                </li>
+                <li class="li-menu" id="li-videos">
+                    <i class="ph ph-youtube-logo"></i> Vídeos
+                </li>
+            </ul>
+            <div class="footer-menu">
+                <a class="social-icon" target="_blank" href="https://github.com/joaoanitelli/portfolio2025"
+                    title="GitHub">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                    </svg>
+                </a>
+                <a class="social-icon" target="_blank"
+                    href="https://www.linkedin.com/in/jo%C3%A3o-pedro-anitelli-artero-804970276/" title="LinkedIn">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+                <a class="social-icon" target="_blank" href="https://www.youtube.com/@joaoarterodev" title="YouTube">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+                        <polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="currentColor" stroke="none" />
+                    </svg>
+                </a>
             </div>
         </div>
-        <div class="content">
 
+        <div class="display">
+            <div class="top-menu">
+                <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu">
+                    <i class="ph ph-list"></i>
+                </button>
+                <nav class="breadcrumb">
+                    <a href="#" class="breadcrumb-home">Início</a>
+                </nav>
+                <div class="switches">
+                    <div class="language-switcher">
+                        <button class="lang-btn notranslate active" data-lang="pt">pt</button>
+                        <button class="lang-btn notranslate" data-lang="en">en</button>
+                        <button class="lang-btn notranslate" data-lang="es">es</button>
+                    </div>
+                    <button class="theme-btn" id="themeToggle" aria-label="Alternar tema">
+                        <span class="sun"><i class="ph ph-sun"></i></span>
+                        <span class="moon"><i class="ph ph-moon"></i></span>
+                    </button>
+                </div>
+            </div>
+            <div class="content"></div>
         </div>
+
     </div>
 
-   
+    <script>
+        const LANG_KEY = 'portfolio-lang';
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'pt',
+                includedLanguages: 'pt,en,es',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        function setActiveLangBtn(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+        }
+
+        function detectUserLang() {
+            const saved = localStorage.getItem(LANG_KEY);
+            if (saved) return saved;
+            const browserLang = (navigator.language || 'pt').toLowerCase();
+            if (browserLang.startsWith('en')) return 'en';
+            if (browserLang.startsWith('es')) return 'es';
+            return 'pt';
+        }
+
+        function restorePortuguese() {
+            document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+            document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + location.hostname;
+            document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + location.hostname;
+            localStorage.setItem(LANG_KEY, 'pt');
+            location.reload();
+        }
+
+        function applyTranslation(lang) {
+            setActiveLangBtn(lang);
+            if (lang === 'pt') return;
+
+            // Aguarda widget + delay extra para garantir que está pronto
+            let attempts = 0;
+            const tryTranslate = setInterval(() => {
+                const select = document.querySelector('.goog-te-combo');
+                if (select && select.options.length > 1) {
+                    clearInterval(tryTranslate);
+                    setTimeout(() => {
+                        select.value = lang;
+                        select.dispatchEvent(new Event('change'));
+                    }, 300); // delay extra após encontrar o select
+                }
+                if (++attempts > 50) clearInterval(tryTranslate); // até 5s
+            }, 100);
+        }
+
+        function retranslatePage() {
+            const lang = localStorage.getItem(LANG_KEY) || 'pt';
+            applyTranslation(lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const initialLang = detectUserLang();
+
+            if (initialLang === 'pt') {
+                document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+                document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + location.hostname;
+            }
+
+            setActiveLangBtn(initialLang);
+
+            // Delay inicial para garantir que o widget do Google carregou
+            setTimeout(() => applyTranslation(initialLang), 800);
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const lang = btn.dataset.lang;
+                    if (lang === 'pt') {
+                        restorePortuguese();
+                    } else {
+                        localStorage.setItem(LANG_KEY, lang);
+                        applyTranslation(lang);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script src="assets/js/ui.js"></script>
     <script src="assets/js/script.js"></script>
+
 </body>
 
 </html>

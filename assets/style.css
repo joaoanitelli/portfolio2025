@@ -176,7 +176,7 @@ body::before {
 .main {
     max-height: 100%;
     overflow: auto;
-    padding: 32px;
+    padding: 24px;
 }
 
 .page-header {
@@ -717,4 +717,550 @@ body.dark .theme-btn .moon {
 
 .main.animated {
     animation: fadeInUp 0.6s forwards;
+}
+
+/* ── APP WRAPPER (novo grid) ── */
+body {
+    display: block;
+    /* reseta o grid que estava no body */
+    overflow: hidden;
+}
+
+.app {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ── SIDEBAR MOBILE ── */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 99;
+    backdrop-filter: blur(2px);
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.hamburger:hover {
+    background: #f3f4f6;
+}
+
+.hamburger i {
+    font-size: 22px;
+}
+
+/* ── SIDEBAR MELHORADA ── */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 8px 24px;
+    margin-bottom: 0;
+    border-bottom: 1px solid #f1f1f1;
+    margin-bottom: 16px;
+}
+
+.logo-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), #ec4899);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.logo-text .title {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--color-text);
+    line-height: 1.2;
+    margin-bottom: 0;
+}
+
+.logo-text .subtitle {
+    font-size: 12px;
+    color: var(--color-gray);
+    margin-top: 2px;
+}
+
+.nav-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0 8px;
+    margin-bottom: 6px;
+}
+
+.li-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.li-menu i {
+    font-size: 18px;
+    flex-shrink: 0;
+    color: inherit;
+}
+
+/* ── DARK MODE ── */
+body.dark {
+    background: #111113;
+    color: #f1f1f1;
+}
+
+body.dark * {
+    color: inherit;
+}
+
+body.dark .menu {
+    background: #18181b;
+    border-color: #27272a;
+}
+
+body.dark .top-menu {
+    background: #18181b;
+    border-color: #27272a;
+}
+
+body.dark .display {
+    background: #111113;
+}
+
+body.dark .cards-results .card {
+    background: #18181b;
+    border-color: #27272a;
+}
+
+body.dark .footer-menu {
+    border-color: #27272a;
+}
+
+body.dark .menu>ul>li:hover,
+body.dark .menu>ul>li.active {
+    background-color: #27272a;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .app {
+        grid-template-columns: 1fr;
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 260px;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        box-shadow: 4px 0 16px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+    }
+
+    .menu.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+    .display {
+        height: 100vh;
+    }
+
+    .hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .language-switcher {
+        display: none;
+    }
+
+    .main {
+        padding: 20px 16px;
+    }
+
+    .content-home {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .content .img {
+        order: -1;
+    }
+
+    .content .img img {
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main {
+        padding: 16px 12px;
+    }
+
+    .content .text .title {
+        font-size: 28px;
+    }
+
+    .content .text .subtitle {
+        font-size: 18px;
+    }
+
+    .content .btns {
+        flex-direction: column;
+    }
+
+    .content .btns button {
+        font-size: 15px;
+    }
+}
+
+
+/* ── QUICK NAV ── */
+.quick-nav {
+    grid-column: 1 / -1;
+    /* ocupa as 2 colunas */
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border, #f1f1f1);
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
+    animation-delay: 1s;
+    margin-top: auto;
+}
+
+.quick-nav-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-gray, #7a7a7a);
+    background: transparent;
+    border: 1px solid transparent;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.quick-nav-item i {
+    font-size: 15px;
+    color: inherit;
+}
+
+.quick-nav-item:hover {
+    color: var(--color-primary, #6A37E6);
+    background: var(--color-primary-light, #ede9fe);
+    border-color: rgba(106, 55, 230, 0.2);
+    transform: translateY(-1px);
+}
+
+/* mobile: centralizado em 2 por linha */
+@media (max-width: 480px) {
+    .quick-nav {
+        gap: 8px;
+    }
+
+    .quick-nav-item {
+        flex: 1;
+        min-width: 120px;
+        justify-content: center;
+    }
+}
+
+/* ══════════════════════════════════
+   DARK MODE — conteúdo das páginas
+   ══════════════════════════════════ */
+
+/* ── Textos gerais ── */
+body.dark .page-title,
+body.dark .page-subtitle,
+body.dark .highlight,
+body.dark .section-title h2,
+body.dark .job-title,
+body.dark .company,
+body.dark .education-info h3,
+body.dark .education-info h4,
+body.dark .course-name,
+body.dark .channel-details h3,
+body.dark .video-info h2,
+body.dark .video-title,
+body.dark .filters-header h3,
+body.dark .project-title,
+body.dark .hero-title,
+body.dark .event-content h3,
+body.dark .hackathon-header h3,
+body.dark .project-info h4 {
+    color: #f1f1f1;
+}
+
+body.dark .page-subtitle,
+body.dark .job-meta,
+body.dark .period,
+body.dark .location,
+body.dark .issuer-name,
+body.dark .course-date,
+body.dark .video-stats,
+body.dark .video-description,
+body.dark .project-description,
+body.dark .hero-subtitle,
+body.dark .event-meta,
+body.dark .hackathon-date,
+body.dark .channel-details p,
+body.dark .results-counter p {
+    color: #9ca3af;
+}
+
+/* ── Cards ── */
+body.dark .job-card,
+body.dark .education-card,
+body.dark .course-item,
+body.dark .project-card,
+body.dark .video-card,
+body.dark .cards-results .card,
+body.dark .event-card,
+body.dark .hackathon-card,
+body.dark .featured-container {
+    background: #1e1e24;
+    border-color: #2e2e36;
+    color: #f1f1f1;
+}
+
+body.dark .job-card:hover,
+body.dark .education-card:hover,
+body.dark .project-card:hover,
+body.dark .video-card:hover {
+    box-shadow: 0 10px 25px rgba(106, 55, 230, 0.2);
+}
+
+/* ── Subscribe section ── */
+body.dark .subscribe-section {
+    background: #18181b;
+}
+
+/* ── Filtros ── */
+body.dark .tech-filter,
+body.dark .filter-btn,
+body.dark .action-btn,
+body.dark .load-more-btn,
+body.dark .btn-outline,
+body.dark .btn-cv {
+    background: #1e1e24;
+    border-color: #3f3f46;
+    color: #d1d5db;
+}
+
+body.dark .tech-filter:hover,
+body.dark .filter-btn:hover,
+body.dark .action-btn:hover {
+    border-color: #8b5cf6;
+    color: #a78bfa;
+    background: rgba(139, 92, 246, 0.1);
+}
+
+body.dark .tech-filter.active,
+body.dark .filter-btn.active {
+    background: #7c3aed;
+    border-color: #7c3aed;
+    color: white;
+}
+
+/* ── Chips (home) ── */
+body.dark .chip {
+    background: #27272a;
+    border-color: #3f3f46;
+    color: #d1d5db;
+}
+
+body.dark .chip:hover {
+    background: rgba(139, 92, 246, 0.15);
+    border-color: #8b5cf6;
+    color: #a78bfa;
+}
+
+/* ── Quick nav ── */
+body.dark .quick-nav {
+    border-color: #27272a;
+}
+
+body.dark .quick-nav-item {
+    color: #9ca3af;
+}
+
+body.dark .quick-nav-item:hover {
+    background: rgba(139, 92, 246, 0.15);
+    color: #a78bfa;
+    border-color: rgba(139, 92, 246, 0.3);
+}
+
+/* ── Icon containers ── */
+body.dark .icon-container.purple {
+    background: rgba(124, 58, 237, 0.2);
+}
+
+body.dark .icon-container.blue {
+    background: rgba(37, 99, 235, 0.2);
+}
+
+body.dark .icon-container.green {
+    background: rgba(22, 163, 74, 0.2);
+}
+
+body.dark .icon-container.orange {
+    background: rgba(234, 88, 12, 0.2);
+}
+
+body.dark .icon-container.pink {
+    background: rgba(236, 72, 153, 0.2);
+}
+
+/* ── Tags e badges ── */
+body.dark .skill-tag {
+    background: rgba(124, 58, 237, 0.2);
+    color: #c4b5fd;
+}
+
+body.dark .tech-tag {
+    background: #27272a;
+    border-color: #3f3f46;
+    color: #d1d5db;
+}
+
+body.dark .highlight-item {
+    background: rgba(37, 99, 235, 0.2);
+    color: #93c5fd;
+}
+
+body.dark .highlight-tag {
+    background: rgba(22, 163, 74, 0.2);
+    color: #86efac;
+    border-color: rgba(22, 163, 74, 0.3);
+}
+
+body.dark .category-badge {
+    background: #6d28d9;
+}
+
+body.dark .tag {
+    background: #27272a;
+    color: #d1d5db;
+}
+
+/* ── Separadores ── */
+body.dark .page-header,
+body.dark .filters-header,
+body.dark .video-meta {
+    border-color: #2e2e36;
+}
+
+/* ── Carousels (fades) ── */
+body.dark .carousel-fade-left {
+    background: linear-gradient(to right, #111113 0%, rgba(17, 17, 19, 0.8) 30%, transparent 100%);
+}
+
+body.dark .carousel-fade-right {
+    background: linear-gradient(to left, #111113 0%, rgba(17, 17, 19, 0.8) 30%, transparent 100%);
+}
+
+body.dark .events-fade-left {
+    background: linear-gradient(to right, #111113 0%, rgba(17, 17, 19, 0.8) 30%, transparent 100%);
+}
+
+body.dark .events-fade-right {
+    background: linear-gradient(to left, #111113 0%, rgba(17, 17, 19, 0.8) 30%, transparent 100%);
+}
+
+/* ── Spinner ── */
+body.dark .spinner {
+    border-color: #3f3f46;
+    border-top-color: #8b5cf6;
+}
+
+/* ── Hero img background ── */
+body.dark .hero-img-bg {
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, transparent 70%);
+}
+
+/* ── Dark mode: textos hardcoded nas páginas ── */
+body.dark .hero-tag {
+    background: rgba(106, 55, 230, 0.2);
+    color: #c4b5fd;
+}
+
+body.dark .job-description p,
+body.dark .job-description ul li,
+body.dark .responsibilities li {
+    color: #d1d5db;
+}
+
+body.dark .event-content p,
+body.dark .event-content h3 {
+    color: #d1d5db;
+}
+
+body.dark .video-description,
+body.dark .video-description p {
+    color: #9ca3af;
+}
+
+/* ── Demais parágrafos com cor fixa ── */
+body.dark .education-description p,
+body.dark .hackathon-content p,
+body.dark .project-info p,
+body.dark .section-subtitle {
+    color: #d1d5db;
+}
+
+body.dark .logo-text .title {
+    color: #f1f1f1;
+}
+
+body.dark .logo-text .subtitle {
+    color: #9ca3af;
+}
+
+body.dark .logo-avatar {
+    color: #fff;
+}
+
+
+body.dark .text-purple,
+body.dark #typewriter .text-purple {
+    color: #a78bfa !important;
+}
+
+body.dark .highlight {
+    color: #a78bfa !important;
 }
