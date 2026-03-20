@@ -667,19 +667,12 @@
             height: 1rem;
         }
 
-        /* ── RESPONSIVO – videos.html ── */
-
-        @media (max-width: 1024px) {
-            .videos-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
+        @media screen and (max-width:1100px) {
 
             /* Featured: vídeo principal empilha */
             .featured-container {
                 grid-template-columns: 1fr;
+                gap: 0;
             }
 
             /* Seção de inscrição fica horizontal */
@@ -696,6 +689,18 @@
                 padding: 0.6rem 1.25rem;
                 font-size: 0.875rem;
             }
+        }
+
+        /* ── RESPONSIVO – videos.html ── */
+
+        @media (max-width: 1024px) {
+            .videos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+
 
             /* Info do vídeo principal */
             .video-info h2 {

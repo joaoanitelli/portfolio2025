@@ -5,7 +5,7 @@
             grid-template-columns: 1fr 1fr;
             align-items: center;
             gap: 48px;
-            min-height: calc(100vh - 60px);
+            height: 100%;
         }
 
         .hero-section {
@@ -167,8 +167,7 @@
         }
 
         .cards-results .card {
-            flex: 1;
-            min-width: 90px;
+            width: 160px;
             background: var(--color-white, #fff);
             border: 1px solid var(--color-border, #f1f1f1);
             border-radius: 12px;
@@ -285,6 +284,7 @@
             .hero-img-wrap {
                 order: -1;
                 /* foto vai para cima no mobile */
+                justify-content: flex-start;
             }
 
             .hero-img-wrap img {
@@ -299,6 +299,29 @@
 
             .hero-title {
                 font-size: clamp(24px, 6vw, 36px);
+            }
+        }
+
+        @media screen and (max-width:768px) {
+            .hero-img-wrap {
+                justify-content: center;
+            }
+
+            .content .hero-section {
+                align-items: center;
+            }
+
+            .hero-chips {
+                justify-content: center;
+            }
+
+            .hero-title,
+            .hero-subtitle {
+                text-align: center;
+            }
+
+            .cards-results {
+                justify-content: center;
             }
         }
 

@@ -159,6 +159,9 @@
                 </div>
             </div>
             <div class="content"></div>
+            <div class="page-spinner" id="pageSpinner">
+                <div class="spinner-ring"></div>
+            </div>
         </div>
 
     </div>
@@ -197,9 +200,9 @@
             location.reload();
         }
 
-        function applyTranslation(lang) {
+        function applyTranslation(lang, onDone) {
             setActiveLangBtn(lang);
-            if (lang === 'pt') return;
+            if (lang === 'pt') { if (onDone) onDone(); return; }
 
             // Aguarda widget + delay extra para garantir que está pronto
             let attempts = 0;
@@ -210,15 +213,16 @@
                     setTimeout(() => {
                         select.value = lang;
                         select.dispatchEvent(new Event('change'));
-                    }, 300); // delay extra após encontrar o select
+                        if (onDone) setTimeout(onDone, 1200);
+                    }, 300);
                 }
-                if (++attempts > 50) clearInterval(tryTranslate); // até 5s
+                if (++attempts > 50) { clearInterval(tryTranslate); if (onDone) onDone(); }
             }, 100);
         }
 
-        function retranslatePage() {
+        function retranslatePage(onDone) {
             const lang = localStorage.getItem(LANG_KEY) || 'pt';
-            applyTranslation(lang);
+            applyTranslation(lang, onDone);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -237,11 +241,14 @@
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const lang = btn.dataset.lang;
+                    setActiveLangBtn(lang);
+                    const sp = document.getElementById('pageSpinner');
+                    sp.classList.add('active');
                     if (lang === 'pt') {
                         restorePortuguese();
                     } else {
                         localStorage.setItem(LANG_KEY, lang);
-                        applyTranslation(lang);
+                        applyTranslation(lang, () => sp.classList.remove('active'));
                     }
                 });
             });

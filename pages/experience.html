@@ -2135,12 +2135,22 @@
 
         @media (max-width: 768px) {
             .events-carousel-container {
-                height: 450px;
+                height: auto;
+            }
+
+            .events-carousel-track {
+                height: auto;
+                align-items: flex-start;
             }
 
             .event-card {
                 width: 320px;
-                height: 420px;
+                height: auto;
+            }
+
+            .event-content {
+                height: auto;
+                flex: 1;
             }
 
             .events-arrow {
@@ -2164,17 +2174,18 @@
 
         @media (max-width: 480px) {
             .events-carousel-container {
-                height: 400px;
+                height: auto;
             }
 
             .event-card {
                 width: 280px;
-                height: 380px;
+                height: auto;
             }
 
             .event-content {
                 padding: 1rem;
-                height: 180px;
+                height: auto;
+                flex: 1;
             }
 
             .events-arrow {
@@ -2378,17 +2389,21 @@
 
             /* Events carousel: card menor */
             .events-carousel-container {
-                height: 450px;
+                height: auto;
+            }
+
+            .events-carousel-track {
+                height: auto;
+                align-items: flex-start;
             }
 
             .event-card {
                 width: 300px;
-                height: 430px;
+                height: auto;
             }
 
             .event-content {
                 height: auto;
-                min-height: 200px;
             }
 
             .events-arrow {
@@ -2509,16 +2524,17 @@
 
             /* Events carousel */
             .events-carousel-container {
-                height: 380px;
+                height: auto;
             }
 
             .event-card {
                 width: 260px;
-                height: 360px;
+                height: auto;
             }
 
             .event-content {
                 padding: 1rem;
+                height: auto;
             }
 
             .event-content h3 {

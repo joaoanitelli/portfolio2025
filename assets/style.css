@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
 
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -171,12 +176,47 @@ body::before {
 
 .content {
     height: calc(100% - 64px);
+    overflow: hidden;
+}
+
+.page-spinner {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-bg);
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-spinner.active {
+    display: flex;
+}
+
+.spinner-ring {
+    width: 36px;
+    height: 36px;
+    border: 3px solid #e5e7eb;
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .main {
-    max-height: 100%;
-    overflow: auto;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
     padding: 24px;
+    box-sizing: border-box;
 }
 
 .page-header {
@@ -571,6 +611,7 @@ body.dark .breadcrumb-home {
     color: #9ca3af;
 }
 
+
 body.dark .breadcrumb-home:hover {
     color: #d1d5db;
     background: #374151;
@@ -833,6 +874,10 @@ body.dark * {
     color: inherit;
 }
 
+body.dark .page-spinner {
+    background-color: #111113;
+}
+
 body.dark .menu {
     background: #18181b;
     border-color: #27272a;
@@ -859,6 +904,12 @@ body.dark .footer-menu {
 body.dark .menu>ul>li:hover,
 body.dark .menu>ul>li.active {
     background-color: #27272a;
+}
+
+@media screen and (max-height:912px) and (max-width:1340px) {
+    .quick-nav {
+        padding-bottom: 16px;
+    }
 }
 
 /* ── RESPONSIVE ── */
@@ -901,10 +952,6 @@ body.dark .menu>ul>li.active {
         display: none;
     }
 
-    .main {
-        padding: 20px 16px;
-    }
-
     .content-home {
         grid-template-columns: 1fr;
         height: auto;
@@ -921,9 +968,6 @@ body.dark .menu>ul>li.active {
 }
 
 @media (max-width: 480px) {
-    .main {
-        padding: 16px 12px;
-    }
 
     .content .text .title {
         font-size: 28px;

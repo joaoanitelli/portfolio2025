@@ -456,16 +456,15 @@
         .feat-img-main {
             border-radius: 0.75rem;
             overflow: hidden;
-            height: 200px;
             border: 1px solid #e5e7eb;
         }
 
         .feat-img-main img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
             object-position: top;
             transition: transform 0.4s ease;
+            aspect-ratio: 383 / 181;
         }
 
         .feat-img-main:hover img {
@@ -509,10 +508,6 @@
 
             .featured-project-gallery {
                 order: -1;
-            }
-
-            .feat-img-main {
-                height: 180px;
             }
         }
 
@@ -600,8 +595,11 @@
                             <p class="featured-project-subtitle">Gestão para Restaurantes e Derivados</p>
                         </div>
                         <p class="featured-project-description">
-                            Sistema comercial completo desenvolvido com o objetivo de ajustar os restaurantes a melhorarem o fluxo de trabalho, e terem métricas precisas sobre o seu negócio. O sistema conta com controle de pedidos em tempo real,
-                            gestão de estoque, relatórios financeiros e cardápio digital com gestor de pedidos integrado.
+                            Sistema comercial completo desenvolvido com o objetivo de ajustar os restaurantes a
+                            melhorarem o fluxo de trabalho, e terem métricas precisas sobre o seu negócio. O sistema
+                            conta com controle de pedidos em tempo real,
+                            gestão de estoque, relatórios financeiros e cardápio digital com gestor de pedidos
+                            integrado.
                         </p>
                         <div class="featured-project-tags">
                             <span class="feat-tag">SaaS</span>
@@ -617,14 +615,14 @@
 
                     <div class="featured-project-gallery">
                         <div class="feat-img-main">
-                            <img src="../assets/images/projetos/xtema.png" alt="Xtema dashboard" />
+                            <img src="../assets/images/projetos/mesas-comandas.png" alt="Xtema dashboard" />
                         </div>
                         <div class="feat-img-grid">
                             <div class="feat-img-thumb">
-                                <img src="../assets/images/projetos/xtema.png" alt="Xtema pedidos" />
+                                <img src="../assets/images/projetos/cardapio.png" alt="Xtema pedidos" />
                             </div>
                             <div class="feat-img-thumb">
-                                <img src="../assets/images/projetos/xtema.png" alt="Xtema estoque" />
+                                <img src="../assets/images/projetos/cardapio mobile.png" alt="Xtema estoque" />
                             </div>
                             <div class="feat-img-thumb">
                                 <img src="../assets/images/projetos/xtema.png" alt="Xtema relatórios" />
@@ -679,9 +677,10 @@
 
             <div class="project-card">
                 <div class="project-image-container">
-                    <img src="../assets/images/projetos/xtema.png" alt="Xtema" class="project-image" />
+                    <img src="../assets/images/projetos/mesas-comandas.png" alt="Xtema" class="project-image" />
                     <div class="project-overlay">
-                        <button class="overlay-btn primary" onclick="window.open('https://xtema.com.br/login', '_blank')">
+                        <button class="overlay-btn primary"
+                            onclick="window.open('https://xtema.com.br/login', '_blank')">
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -695,7 +694,8 @@
                 </div>
                 <div class="project-info">
                     <h3 class="project-title">Xtema - Gestão p/ Restaurantes e Derivados</h3>
-                    <p class="project-description">Sistema completo de gestão para restaurantes. Inclui controle de pedidos, estoque, relatórios, cardápio online, gestor de pedidos...</p>
+                    <p class="project-description">Sistema completo de gestão para restaurantes. Inclui controle de
+                        pedidos, estoque, relatórios, cardápio online, gestor de pedidos...</p>
                     <div class="project-technologies">
                         <span class="tech-tag">Saas</span>
                         <span class="tech-tag">Html/Css</span>

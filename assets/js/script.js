@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    if (window.location.pathname !== '/') {
-        window.location.replace('/');
-        return;
-    }
-
     const content = document.querySelector('.content');
+    const spinner = document.getElementById('pageSpinner');
+    let isLoading = false;
+
+    function showSpinner() { spinner.classList.add('active'); }
+    function hideSpinner() { spinner.classList.remove('active'); }
 
     function loadPage(html) {
         content.innerHTML = html;
@@ -14,15 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
         void mainEl.offsetWidth;
         mainEl.classList.add('animated');
     }
-
-    fetch('./pages/home.html')
-        .then(r => r.text())
-        .then(r => {
-            loadPage(r);
-            retranslatePage();
-            startTypewriterEffect();
-            setTimeout(startCounters, 2500);
-        });
 
     function startTypewriterEffect() {
         const text = 'Olá, eu sou o <span class="text-purple notranslate"> João Artero </span> :)';
@@ -111,16 +102,21 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!track || !leftArrow || !rightArrow || cards.length === 0) return;
 
         track.style.animation = 'none';
-        track.style.transform = 'translateX(0px)';
         track.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
 
-        let currentPosition = 0;
+        const actualWidth = cards[0].offsetWidth || itemWidth;
+        const centerOffset = container.offsetWidth < (actualWidth + gap)
+            ? Math.max(0, (container.offsetWidth - actualWidth) / 2)
+            : 0;
+        let currentPosition = centerOffset;
         let currentIndex = 0;
         let isTransitioning = false;
         let alreadyMovedRight = false;
 
-        const moveDistance = itemWidth + gap;
+        const moveDistance = actualWidth + gap;
         const totalItems = cards.length / 2;
+
+        track.style.transform = `translateX(${centerOffset}px)`;
 
         function updateLeftArrowVisibility() {
             leftArrow.style.visibility = (currentIndex === 0 && !alreadyMovedRight) ? 'hidden' : 'visible';
@@ -145,9 +141,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     track.style.transform = `translateX(${currentPosition}px)`;
                     setTimeout(() => {
                         track.style.transition = 'none';
-                        currentPosition = 0;
+                        currentPosition = centerOffset;
                         currentIndex = 0;
-                        track.style.transform = 'translateX(0px)';
+                        track.style.transform = `translateX(${centerOffset}px)`;
                         alreadyMovedRight = false;
                         updateLeftArrowVisibility();
                         setTimeout(() => {
@@ -163,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (currentIndex === 0) {
                     track.style.transition = 'none';
                     currentIndex = totalItems - 1;
-                    currentPosition = -(currentIndex * moveDistance);
+                    currentPosition = centerOffset - (currentIndex * moveDistance);
                     track.style.transform = `translateX(${currentPosition}px)`;
                     setTimeout(() => {
                         track.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
@@ -204,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => {
                 if (!isTransitioning) {
-                    currentPosition = -(index * moveDistance);
+                    currentPosition = centerOffset - (index * moveDistance);
                     currentIndex = index;
                     track.style.transform = `translateX(${currentPosition}px)`;
                     updateIndicators();
@@ -226,39 +222,66 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const liMenu = document.querySelectorAll('.li-menu');
 
-    liMenu.forEach(item => {
-        item.addEventListener('click', () => {
-            liMenu.forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
+    const menuIds = { home: 'li-home', sobre: 'li-experience', projetos: 'li-projects', videos: 'li-videos' };
 
-            if (item.id === 'li-home') {
-                updateBreadcrumb('home');
-                fetch('./pages/home.html')
-                    .then(r => r.text())
-                    .then(r => {
-                        loadPage(r);
-                        retranslatePage();
-                        startTypewriterEffect();
-                        setTimeout(startCounters, 2500);
-                    });
+    function getQueryPage() {
+        const p = new URLSearchParams(window.location.search).get('page');
+        const valid = { home: 1, sobre: 1, projetos: 1, videos: 1 };
+        return (p && valid[p]) ? p : 'home';
+    }
 
-            } else if (item.id === 'li-experience') {
-                updateBreadcrumb('Sobre Mim');
-                fetch('./pages/experience.html')
-                    .then(r => r.text())
-                    .then(r => {
-                        loadPage(r);
-                        retranslatePage();
-                        setTimeout(function () {
-                            initializeCarousel('.events-carousel-container', '.events-carousel-track', '.events-arrow-left', '.events-arrow-right', '.events-indicator', '.event-card', 380, 32);
-                            initializeCarousel('.certificates-carousel-container', '.certificates-carousel-track', '.certificates-arrow-left', '.certificates-arrow-right', '.certificates-indicator', '.event-card', 380, 32);
-                        }, 200);
-                    });
+    function setActiveMenu(pageKey) {
+        liMenu.forEach(i => i.classList.remove('active'));
+        const el = document.getElementById(menuIds[pageKey]);
+        if (el) el.classList.add('active');
+    }
 
-            } else if (item.id === 'li-projects') {
-                updateBreadcrumb('Projetos');
+    function navigateTo(pageKey, addToHistory) {
+        if (isLoading) return;
+        isLoading = true;
+        showSpinner();
+        setActiveMenu(pageKey);
+        const url = pageKey === 'home' ? '/' : '/?page=' + pageKey;
+        if (addToHistory) {
+            history.pushState({ page: pageKey }, '', url);
+        } else {
+            history.replaceState({ page: pageKey }, '', url);
+        }
+        ({ home: loadHome, sobre: loadExperience, projetos: loadProjects, videos: loadVideos }[pageKey] || loadHome)();
+    }
 
-                function initializeFilter() {
+    function loadHome() {
+        updateBreadcrumb('home');
+        fetch('./pages/home.html')
+            .then(r => r.text())
+            .then(r => {
+                loadPage(r);
+                startTypewriterEffect();
+                setTimeout(startCounters, 2500);
+                retranslatePage(() => { hideSpinner(); isLoading = false; });
+            })
+            .catch(() => { hideSpinner(); isLoading = false; });
+    }
+
+    function loadExperience() {
+        updateBreadcrumb('Sobre Mim');
+        fetch('./pages/experience.html')
+            .then(r => r.text())
+            .then(r => {
+                loadPage(r);
+                setTimeout(function () {
+                    initializeCarousel('.events-carousel-container', '.events-carousel-track', '.events-arrow-left', '.events-arrow-right', '.events-indicator', '.event-card', 380, 32);
+                    initializeCarousel('.certificates-carousel-container', '.certificates-carousel-track', '.certificates-arrow-left', '.certificates-arrow-right', '.certificates-indicator', '.event-card', 380, 32);
+                }, 200);
+                retranslatePage(() => { hideSpinner(); isLoading = false; });
+            })
+            .catch(() => { hideSpinner(); isLoading = false; });
+    }
+
+    function loadProjects() {
+        updateBreadcrumb('Projetos');
+
+        function initializeFilter() {
                     var resultsCount = document.getElementById('resultsCount');
                     var cards = document.querySelectorAll('.project-card');
                     var filtros = document.querySelectorAll('.tech-filter');
@@ -295,18 +318,35 @@ document.addEventListener('DOMContentLoaded', function () {
                     });
                 }
 
-                fetch('./pages/cards.html')
-                    .then(r => r.text())
-                    .then(r => {
-                        loadPage(r);
-                        retranslatePage();
-                        initializeFilter();
+        fetch('./pages/cards.html')
+            .then(r => r.text())
+            .then(r => {
+                loadPage(r);
+                retranslatePage();
+                initializeFilter();
+
+                const mainImg = content.querySelector('.feat-img-main img');
+                content.querySelectorAll('.feat-img-thumb').forEach(function (thumb) {
+                    thumb.addEventListener('click', function () {
+                        const thumbImg = thumb.querySelector('img');
+                        const prevSrc = mainImg.src;
+                        const prevAlt = mainImg.alt;
+                        mainImg.src = thumbImg.src;
+                        mainImg.alt = thumbImg.alt;
+                        thumbImg.src = prevSrc;
+                        thumbImg.alt = prevAlt;
                     });
+                });
+                retranslatePage(() => { hideSpinner(); isLoading = false; });
+            })
+            .catch(() => { hideSpinner(); isLoading = false; });
 
-            } else if (item.id === 'li-videos') {
-                updateBreadcrumb('Vídeos');
+    }
 
-                function initializeVideos() {
+    function loadVideos() {
+        updateBreadcrumb('Vídeos');
+
+        function initializeVideos() {
                     const YOUTUBE_CONFIG = {
                         API_KEY: 'AIzaSyCIT2o8vksHYQRSVD0TtcPzp_L44Uwcghw',
                         CHANNEL_ID: 'UCA1qNdMTQzXDxZOU-y36l9g',
@@ -586,18 +626,30 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
 
-                fetch('./pages/videos.html')
-                    .then(r => r.text())
-                    .then(r => {
-                        loadPage(r);
-                        retranslatePage();
-                        initializeVideos();
-                    });
+        fetch('./pages/videos.html')
+            .then(r => r.text())
+            .then(r => {
+                loadPage(r);
+                initializeVideos();
+                retranslatePage(() => { hideSpinner(); isLoading = false; });
+            })
+            .catch(() => { hideSpinner(); isLoading = false; });
 
-            } else {
-                content.innerHTML = '';
-            }
+    }
+
+    liMenu.forEach(item => {
+        item.addEventListener('click', () => {
+            const map = { 'li-home': 'home', 'li-experience': 'sobre', 'li-projects': 'projetos', 'li-videos': 'videos' };
+            const page = map[item.id];
+            if (page) navigateTo(page, true);
         });
     });
+
+    window.addEventListener('popstate', function (e) {
+        const page = (e.state && e.state.page) || getQueryPage();
+        navigateTo(page, false);
+    });
+
+    navigateTo(getQueryPage(), false);
 
 });
